@@ -136,55 +136,39 @@ export const Hero: React.FC<HeroProps> = ({ onViewWorkClick, onContactClick }) =
                   </div>
                 </div>
 
-                {/* Center: Abstract Developer Silhouette + Spider-Verse Rim Lighting */}
+                {/* Center: Profile Image + Spider-Verse Rim Lighting */}
                 <div className="relative z-10 my-auto flex flex-col items-center">
-                  <div className="relative w-36 h-36 rounded-2xl bg-gradient-to-tr from-[#160d2b] to-[#251547] border border-[#3e2b6e] flex items-center justify-center shadow-[0_0_30px_rgba(255,42,85,0.3)] transition-transform duration-500 group-hover:scale-105">
-                    {/* Stylized Developer Silhouette with Neon Rim */}
+                  <div className="relative w-36 h-36 rounded-2xl bg-gradient-to-tr from-[#160d2b] to-[#251547] border-2 border-[#3e2b6e] hover:border-[#00e5ff] flex items-center justify-center shadow-[0_0_30px_rgba(255,42,85,0.3)] transition-all duration-300 group-hover:scale-105 overflow-hidden">
+                    {/* Actual profile image pointing to /profile.jpg */}
+                    <img
+                      src="/profile.jpg"
+                      alt="Maaz - Web Developer"
+                      className="w-full h-full object-cover rounded-2xl z-10"
+                      onError={(e) => {
+                        // Fallback in case the user deletes or renames the image
+                        const target = e.currentTarget;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'block';
+                      }}
+                    />
+
+                    {/* Fallback stylized avatar silhouette */}
                     <svg
                       viewBox="0 0 100 100"
-                      className="w-28 h-28"
+                      className="w-28 h-28 hidden"
                       fill="none"
                     >
-                      {/* Spider web aura behind head */}
-                      <path
-                        d="M50 15 L70 30 L80 50 L70 70 L50 85 L30 70 L20 50 L30 30 Z"
-                        stroke="#00e5ff"
-                        strokeWidth="1"
-                        strokeDasharray="2 2"
-                        opacity="0.4"
-                      />
-                      {/* Developer Silhouette Head */}
                       <circle cx="50" cy="40" r="16" fill="#090514" stroke="#ff2a55" strokeWidth="2.5" />
-                      {/* Stylized Eye Visor (Spider-Verse glowing lenses) */}
-                      <path
-                        d="M40 37 Q46 33 50 40 Q46 43 40 37 Z"
-                        fill="#00e5ff"
-                        className="animate-pulse"
-                      />
-                      <path
-                        d="M60 37 Q54 33 50 40 Q54 43 60 37 Z"
-                        fill="#00e5ff"
-                        className="animate-pulse"
-                      />
-                      {/* Torso */}
-                      <path
-                        d="M26 80 C26 62 36 58 50 58 C64 58 74 62 74 80 Z"
-                        fill="#090514"
-                        stroke="#00e5ff"
-                        strokeWidth="2.5"
-                      />
-                      {/* Spider Web Emblem Chest Pattern */}
-                      <path
-                        d="M50 62 L50 76 M42 66 L58 66 M44 72 L56 72"
-                        stroke="#ff2a55"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
+                      <path d="M40 37 Q46 33 50 40 Q46 43 40 37 Z" fill="#00e5ff" className="animate-pulse" />
+                      <path d="M60 37 Q54 33 50 40 Q54 43 60 37 Z" fill="#00e5ff" className="animate-pulse" />
+                      <path d="M26 80 C26 62 36 58 50 58 C64 58 74 62 74 80 Z" fill="#090514" stroke="#00e5ff" strokeWidth="2.5" />
+                      <path d="M50 62 L50 76 M42 66 L58 66 M44 72 L56 72" stroke="#ff2a55" strokeWidth="2" strokeLinecap="round" />
                     </svg>
 
                     {/* Edge Rim Lighting */}
-                    <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-[#ff2a55] rounded-tl-lg" />
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-[#00e5ff] rounded-br-lg" />
+                    <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-[#ff2a55] rounded-tl-lg pointer-events-none" />
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-[#00e5ff] rounded-br-lg pointer-events-none" />
                   </div>
 
                   {/* Coder Title */}
