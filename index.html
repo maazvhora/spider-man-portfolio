@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maaz | Spider-Verse Web Developer Portfolio</title>
+    <meta name="description" content="Modern, premium, fully responsive portfolio for Maaz — Web Developer & MERN Stack specialist inspired by the Spider-Verse dimension." />
+    <meta property="og:title" content="Maaz | Spider-Verse Web Developer Portfolio" />
+    <meta property="og:description" content="Modern, premium, fully responsive portfolio for Maaz — Web Developer & MERN Stack specialist inspired by the Spider-Verse dimension." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#08080c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 L20 10 L28 12 L22 18 L24 26 L16 22 L8 26 L10 18 L4 12 L12 10 Z' fill='%23ff2a55' stroke='%2300e5ff' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%2300e5ff'/%3E%3C/svg%3E" />
+  </head>
+  <body class="bg-[#07070b] text-[#f1f1f6] selection:bg-[#ff2a55] selection:text-white antialiased overflow-x-hidden font-sans">
+    <!-- Interactive Spider-Web Particle Canvas -->
+    <canvas id="spider-web-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
+
+    <!-- Sticky Glassmorphic Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 bg-transparent border-b border-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          <a href="#home" class="flex items-center gap-2.5 text-white group">
+            <div class="w-8 h-8 rounded-lg bg-[#140e24] border border-[#ff2a55]/40 flex items-center justify-center transition-all group-hover:border-[#00e5ff] group-hover:shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 text-[#ff2a55] group-hover:text-[#00e5ff] transition-colors" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+                <path d="m4.93 4.93 2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                <path d="M6 9a8 8 0 0 1 12 0M6 15a8 8 0 0 0 12 0" />
+              </svg>
+            </div>
+            <span class="font-display text-2xl sm:text-3xl tracking-wider text-white glitch-hover">MAAZ</span>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-7 lg:gap-8 text-sm font-medium">
+            <a href="#home" class="nav-link py-1 text-[#00e5ff] font-semibold hover:text-white transition-colors">Home</a>
+            <a href="#about" class="nav-link py-1 text-[#9f9fb5] hover:text-white transition-colors">About</a>
+            <a href="#skills" class="nav-link py-1 text-[#9f9fb5] hover:text-white transition-colors">Skills</a>
+            <a href="#projects" class="nav-link py-1 text-[#9f9fb5] hover:text-white transition-colors">Projects</a>
+            <a href="#experience" class="nav-link py-1 text-[#9f9fb5] hover:text-white transition-colors">Experience</a>
+            <a href="#contact" class="nav-link py-1 text-[#9f9fb5] hover:text-white transition-colors">Contact</a>
+          </nav>
+
+          <div class="hidden md:flex items-center gap-3">
+            <a href="#contact" class="px-4 py-2 text-xs font-semibold tracking-wider uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#b91c1c] rounded-lg shadow-md hover:shadow-[0_0_20px_rgba(255,42,85,0.5)] transition-all">
+              Connect ↗
+            </a>
+          </div>
+
+          <button id="mobile-menu-toggle" type="button" class="md:hidden p-2 text-[#a1a1aa] hover:text-white" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a14]/95 backdrop-blur-xl border-b border-[#251e3c] px-4 pt-4 pb-6 mt-2 shadow-2xl">
+        <div class="flex flex-col space-y-3">
+          <a href="#home" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">Home</a>
+          <a href="#about" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">About</a>
+          <a href="#skills" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">Skills</a>
+          <a href="#projects" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">Projects</a>
+          <a href="#experience" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">Experience</a>
+          <a href="#contact" class="px-3 py-2 text-sm text-[#d1d1db] hover:text-[#00e5ff] rounded-lg">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <!-- HERO SECTION -->
+      <section id="home" class="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#ff2a55]/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00e5ff]/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-halftone opacity-35 pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div class="lg:col-span-7 flex flex-col items-start text-left">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#130d24] border border-[#ff2a55]/40 mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-[#ff2a55] animate-ping"></span>
+                <span class="text-xs font-code font-semibold tracking-wider uppercase text-[#00e5ff]">Dimension Earth-616 // Active Portfolio</span>
+              </div>
+
+              <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white mb-4">
+                HI, I'M <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2a55] via-[#f43f5e] to-[#00e5ff] chromatic-text">MAAZ</span>
+              </h1>
+
+              <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#c4c4d4] mb-6 flex items-center gap-3">
+                <span>Web Developer</span>
+                <span class="text-[#ff2a55]">&</span>
+                <span class="text-[#00e5ff]">MERN Stack Developer</span>
+              </h2>
+
+              <p class="text-base sm:text-lg text-[#9da0b5] max-w-xl leading-relaxed mb-8">
+                I build modern, responsive and interactive web experiences using modern frontend technologies. Specialized in engineering fast, responsive, and tactile web applications with production-grade React architecture.
+              </p>
+
+              <div class="flex flex-wrap items-center gap-4 mb-12">
+                <a href="#projects" class="px-6 py-3.5 text-sm font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-xl shadow-[0_0_25px_rgba(255,42,85,0.4)] hover:shadow-[0_0_35px_rgba(255,42,85,0.7)] transition-all">
+                  View My Work ↓
+                </a>
+                <a href="#contact" class="px-6 py-3.5 text-sm font-bold tracking-wider uppercase text-white bg-[#120c22] border border-[#00e5ff]/50 rounded-xl hover:border-[#00e5ff] hover:shadow-[0_0_20px_rgba(0,229,255,0.35)] transition-all">
+                  Contact Me ✉
+                </a>
+                <a href="https://github.com/vhoramaaz" target="_blank" rel="noreferrer" class="px-5 py-3.5 text-sm font-bold tracking-wider uppercase text-[#a1a1b5] hover:text-white bg-[#0e091a] border border-[#261f3d] rounded-xl hover:border-[#a855f7] transition-all">
+                  GitHub ↗
+                </a>
+              </div>
+
+              <div class="pt-6 border-t border-[#1e1732] grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-xl">
+                <div>
+                  <div class="font-display text-2xl sm:text-3xl text-white">15+</div>
+                  <div class="text-xs text-[#828299] font-medium">Core Projects</div>
+                </div>
+                <div>
+                  <div class="font-display text-2xl sm:text-3xl text-white">750+</div>
+                  <div class="text-xs text-[#828299] font-medium">GitHub Commits</div>
+                </div>
+                <div>
+                  <div class="font-display text-2xl sm:text-3xl text-white">React / MERN</div>
+                  <div class="text-xs text-[#828299] font-medium">Frontend Stack</div>
+                </div>
+                <div>
+                  <div class="font-display text-2xl sm:text-3xl text-white">100%</div>
+                  <div class="text-xs text-[#828299] font-medium">Fluid Responsive</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Abstract Spider-Verse Visual -->
+            <div class="lg:col-span-5 flex justify-center items-center relative">
+              <div class="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border border-dashed border-[#ff2a55]/25 animate-[spin_60s_linear_infinite]"></div>
+                <div class="absolute inset-6 rounded-full border border-[#00e5ff]/20 animate-[spin_45s_linear_infinite_reverse]"></div>
+                
+                <div class="relative w-[300px] sm:w-[340px] h-[360px] sm:h-[400px] rounded-3xl bg-gradient-to-b from-[#140e26] via-[#0d091a] to-[#07050e] border-2 border-[#2b2149] shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col items-center justify-between p-6">
+                  <div class="w-full flex items-center justify-between pb-3 border-b border-[#251b40]">
+                    <div class="flex items-center gap-1.5">
+                      <div class="w-2.5 h-2.5 rounded-full bg-[#ff2a55]"></div>
+                      <div class="w-2.5 h-2.5 rounded-full bg-[#00e5ff]"></div>
+                      <div class="w-2.5 h-2.5 rounded-full bg-[#a855f7]"></div>
+                    </div>
+                    <div class="text-[10px] font-code text-[#00e5ff] tracking-widest uppercase">DIMENSION // 616</div>
+                  </div>
+
+                  <div class="my-auto flex flex-col items-center">
+                    <div class="relative w-32 h-32 rounded-2xl bg-[#160d2b] border border-[#3e2b6e] flex items-center justify-center shadow-[0_0_30px_rgba(255,42,85,0.3)]">
+                      <svg viewBox="0 0 100 100" class="w-24 h-24" fill="none">
+                        <circle cx="50" cy="40" r="16" fill="#090514" stroke="#ff2a55" stroke-width="2.5" />
+                        <path d="M40 37 Q46 33 50 40 Q46 43 40 37 Z" fill="#00e5ff" />
+                        <path d="M60 37 Q54 33 50 40 Q54 43 60 37 Z" fill="#00e5ff" />
+                        <path d="M26 80 C26 62 36 58 50 58 C64 58 74 62 74 80 Z" fill="#090514" stroke="#00e5ff" stroke-width="2.5" />
+                        <path d="M50 62 L50 76 M42 66 L58 66 M44 72 L56 72" stroke="#ff2a55" stroke-width="2" stroke-linecap="round" />
+                      </svg>
+                    </div>
+                    <div class="mt-4 text-center">
+                      <div class="font-display text-xl text-white tracking-widest">MAAZ.DEV</div>
+                      <div class="text-[11px] font-code text-[#ff2a55]">MERN_STACK_SPECIALIST</div>
+                    </div>
+                  </div>
+
+                  <div class="w-full pt-3 border-t border-[#251b40] flex items-center justify-between text-[11px] font-code text-[#8888a3]">
+                    <span class="text-[#00e5ff]">REACT 19 + JS</span>
+                    <span class="text-[#ff2a55]">STATUS: READY</span>
+                  </div>
+                </div>
+
+                <div class="absolute -top-3 -left-4 bg-[#0c0817]/90 border border-[#ff2a55]/60 rounded-xl p-2.5 shadow-lg hidden sm:block">
+                  <div class="text-[10px] font-code font-bold text-[#ff2a55]">UseSpiderSense.js</div>
+                  <div class="text-[11px] font-code text-[#c0c0d8]">const bug = detectBug();</div>
+                </div>
+
+                <div class="absolute -bottom-4 -right-4 bg-[#0c0817]/90 border border-[#00e5ff]/60 rounded-xl p-2.5 shadow-lg hidden sm:block">
+                  <div class="text-[10px] font-code font-bold text-[#00e5ff]">Dimension.mern</div>
+                  <div class="text-[11px] font-code text-[#c0c0d8]">deploy('Vercel', 60fps);</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="relative py-24 bg-[#08080f]/90 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#150d28] border border-[#a855f7]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#00e5ff]">ORIGIN DOSSIER</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              ENTER MY <span class="text-[#ff2a55] chromatic-text">SPIDER-VERSE</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9fa0b5] leading-relaxed">
+              Get behind the mask. How I engineer web applications, bridge design with code, and build across dimensions.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+            <div class="md:col-span-7 bg-[#120c24] border-2 border-[#261d3d] rounded-2xl p-6 sm:p-8 relative hover:border-[#ff2a55] transition-all">
+              <div class="absolute top-0 right-0 bg-[#ff2a55] text-white px-4 py-1 text-xs font-display tracking-widest uppercase rounded-bl-xl">PANEL #01</div>
+              <h3 class="font-display text-3xl sm:text-4xl text-white tracking-wide mb-3">THE DEVELOPER</h3>
+              <p class="text-base text-[#cfd0df] leading-relaxed mb-4 font-medium">
+                Frontend and full-stack development enthusiast focused on creating responsive and interactive web experiences.
+              </p>
+              <p class="text-sm text-[#8f92a9] leading-relaxed mb-6">
+                I don’t just write code; I architect fluid digital interfaces. From crafting clean, reusable React components to writing resilient REST APIs with Express and Node.js, my mission is to make web software feel fast, accessible, and intuitive.
+              </p>
+              <div class="bg-[#1b1233] border border-[#00e5ff]/50 rounded-2xl p-4 text-xs sm:text-sm text-[#e0f2fe] flex items-start gap-3">
+                <span class="text-[#00e5ff] text-base leading-none">💬</span>
+                <div>
+                  <strong class="text-[#00e5ff] font-code">Spider-Sense Note:</strong>
+                  "Great code doesn't just pass tests — it delivers a seamless 60 frames-per-second experience on any screen dimension."
+                </div>
+              </div>
+            </div>
+
+            <div class="md:col-span-5 bg-[#120c24] border-2 border-[#261d3d] rounded-2xl p-6 sm:p-8 relative hover:border-[#00e5ff] transition-all flex flex-col justify-between">
+              <div class="absolute top-0 right-0 bg-[#00e5ff] text-[#07070b] px-4 py-1 text-xs font-display tracking-widest uppercase font-bold rounded-bl-xl">PANEL #02</div>
+              <div>
+                <h3 class="font-display text-3xl sm:text-4xl text-white tracking-wide mb-3">THE BUILDER</h3>
+                <p class="text-base text-[#cfd0df] leading-relaxed mb-4 font-medium">
+                  I enjoy turning ideas into real websites and applications.
+                </p>
+                <p class="text-sm text-[#8f92a9] leading-relaxed mb-6">
+                  Whether cloning precision interfaces like Apple or building end-to-end full-stack e-commerce stores, I take ownership from the first Figma frame to the live production deployment on Vercel.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-[#231b38] flex items-center gap-3 text-xs text-[#9d9eb5]">
+                <span class="text-white font-medium">Pixel Precision</span> /
+                <span class="text-white font-medium">Clean Architecture</span> /
+                <span class="text-white font-medium">Zero Bloat</span>
+              </div>
+            </div>
+
+            <div class="md:col-span-5 bg-[#120c24] border-2 border-[#261d3d] rounded-2xl p-6 sm:p-8 relative hover:border-[#a855f7] transition-all">
+              <div class="absolute top-0 right-0 bg-[#a855f7] text-white px-4 py-1 text-xs font-display tracking-widest uppercase rounded-bl-xl">PANEL #03</div>
+              <h3 class="font-display text-3xl sm:text-4xl text-white tracking-wide mb-3">THE JOURNEY</h3>
+              <p class="text-base text-[#cfd0df] leading-relaxed mb-4 font-medium">
+                Currently expanding my skills across React, JavaScript and the MERN stack.
+              </p>
+              <p class="text-sm text-[#8f92a9] leading-relaxed mb-4">
+                Constantly exploring cutting-edge web patterns: server-side state, modern bundlers, TypeScript, and micro-interactions. Every project is a new multiverse mission to level up.
+              </p>
+              <div class="inline-block bg-[#ff2a55]/15 border border-[#ff2a55]/60 text-[#ff8099] rounded-xl px-3.5 py-2 text-xs font-code font-bold">
+                ⚡ CONSTANTLY ITERATING & DEPLOYING
+              </div>
+            </div>
+
+            <div class="md:col-span-7 bg-[#120c24] border-2 border-[#261d3d] rounded-2xl p-6 sm:p-8 relative hover:border-[#00e5ff] transition-all">
+              <h3 class="font-display text-3xl sm:text-4xl text-white tracking-wide mb-4">ENGINEERING CODEC & GUARANTEES</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-3.5 rounded-xl bg-[#150f28]/80 border border-[#2d224b]">
+                  <div class="text-sm font-bold text-white mb-1"><span class="text-[#ff2a55]">✦</span> Responsive Mastery</div>
+                  <p class="text-xs text-[#8f92a9]">Flawless UI scaling across mobile phones, tablets, laptops, and ultra-wide screens.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#150f28]/80 border border-[#2d224b]">
+                  <div class="text-sm font-bold text-white mb-1"><span class="text-[#00e5ff]">✦</span> Modern React Ecosystem</div>
+                  <p class="text-xs text-[#8f92a9]">Custom hooks, strict prop types, clean directory structures, and optimized re-renders.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#150f28]/80 border border-[#2d224b]">
+                  <div class="text-sm font-bold text-white mb-1"><span class="text-[#a855f7]">✦</span> Git & Collaboration</div>
+                  <p class="text-xs text-[#8f92a9]">Descriptive commit logs, branch workflows, and clean code documentation.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#150f28]/80 border border-[#2d224b]">
+                  <div class="text-sm font-bold text-white mb-1"><span class="text-[#22c55e]">✦</span> Production Delivery</div>
+                  <p class="text-xs text-[#8f92a9]">Vercel deployments, custom domains, lightning-fast edge CDN caching, and SSL security.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="relative py-24 bg-[#07070c] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#160d29] border border-[#ff2a55]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#ff2a55]">SUPERHERO ABILITIES</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              MY <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2a55] to-[#00e5ff] chromatic-text">POWERS</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9ea0b4] leading-relaxed">
+              Every web technology functions as a superpower in my developer arsenal.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-[#120c24] border border-[#251d3b] rounded-xl max-w-md mx-auto">
+              <button class="skill-filter-btn px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-lg bg-gradient-to-r from-[#ff2a55] to-[#dc2626] text-white shadow-lg cursor-pointer" data-filter="all">All Powers (10)</button>
+              <button class="skill-filter-btn px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="frontend">Frontend</button>
+              <button class="skill-filter-btn px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="backend">Backend / MERN</button>
+              <button class="skill-filter-btn px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="tools">Tools</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- HTML5 -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#ff2a55] hover:shadow-[0_0_25px_rgba(255,42,85,0.45)]" data-category="frontend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#ff2a55] font-extrabold">SNAP!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#260f1e] text-[#ff2a55] border border-[#ff2a55]/40 flex items-center justify-center font-bold text-lg font-code">&lt;/&gt;</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">HTML5</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Structure Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Semantic DOM architecture, strict accessibility standards (a11y), clean microdata, and SEO-first markup.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">95%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#ff2a55] to-[#f43f5e] w-[95%]"></div></div>
+              </div>
+            </div>
+
+            <!-- CSS3 / Tailwind -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#00e5ff] hover:shadow-[0_0_25px_rgba(0,229,255,0.45)]" data-category="frontend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#00e5ff] font-extrabold">SWISH!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#0c1f2e] text-[#00e5ff] border border-[#00e5ff]/40 flex items-center justify-center font-bold text-lg font-code">#CSS</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">CSS3 / Tailwind</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Visual Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Modern styling systems, responsive Flexbox/Grid, CSS custom properties, and fluid typography.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">92%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#00e5ff] to-[#38bdf8] w-[92%]"></div></div>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#a855f7] hover:shadow-[0_0_25px_rgba(168,85,247,0.45)]" data-category="frontend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#a855f7] font-extrabold">ZAP!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#201033] text-[#a855f7] border border-[#a855f7]/40 flex items-center justify-center font-bold text-lg font-code">JS</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">JavaScript (ES6+)</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Logic Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Asynchronous event loops, Promises, closures, DOM manipulation, functional patterns, and clean algorithms.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">90%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#a855f7] to-[#c084fc] w-[90%]"></div></div>
+              </div>
+            </div>
+
+            <!-- React.js -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#00e5ff] hover:shadow-[0_0_25px_rgba(0,229,255,0.45)]" data-category="frontend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#00e5ff] font-extrabold">THWIP!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#0c1f2e] text-[#00e5ff] border border-[#00e5ff]/40 flex items-center justify-center font-bold text-lg font-code">⚛</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">React.js</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Component Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Modular component architecture, React Hooks, context state management, lazy loading, and optimized re-renders.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">92%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#00e5ff] to-[#38bdf8] w-[92%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Node.js & Express -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#ff2a55] hover:shadow-[0_0_25px_rgba(255,42,85,0.45)]" data-category="backend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#ff2a55] font-extrabold">BOOM!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#260f1e] text-[#ff2a55] border border-[#ff2a55]/40 flex items-center justify-center font-bold text-lg font-code">NODE</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">Node.js & Express</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Backend Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">RESTful API construction, Express middleware pipelines, JSON Web Tokens (JWT), and server-side request routing.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">85%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#ff2a55] to-[#f43f5e] w-[85%]"></div></div>
+              </div>
+            </div>
+
+            <!-- MongoDB -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#a855f7] hover:shadow-[0_0_25px_rgba(168,85,247,0.45)]" data-category="backend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#a855f7] font-extrabold">CRUNCH!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#201033] text-[#a855f7] border border-[#a855f7]/40 flex items-center justify-center font-bold text-lg font-code">DB</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">MongoDB & Mongoose</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Data Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">NoSQL document data modeling, schema indexing, aggregation pipelines, and secure CRUD operations.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">82%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#a855f7] to-[#c084fc] w-[82%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Git & GitHub -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#ff2a55] hover:shadow-[0_0_25px_rgba(255,42,85,0.45)]" data-category="tools">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#ff2a55] font-extrabold">SYNC!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#260f1e] text-[#ff2a55] border border-[#ff2a55]/40 flex items-center justify-center font-bold text-lg font-code">GIT</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">Git & GitHub</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Version Control</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Branching workflows, semantic commit histories, pull requests, merge conflict resolution, and repository management.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">88%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#ff2a55] to-[#f43f5e] w-[88%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Webpack & Vite -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#00e5ff] hover:shadow-[0_0_25px_rgba(0,229,255,0.45)]" data-category="tools">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#00e5ff] font-extrabold">WARP!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#0c1f2e] text-[#00e5ff] border border-[#00e5ff]/40 flex items-center justify-center font-bold text-lg font-code">BOX</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">Webpack & Vite</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Build Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Modern bundler configurations, code splitting, asset optimization, tree shaking, and hot module replacement.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">85%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#00e5ff] to-[#38bdf8] w-[85%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Vercel Deployment -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#a855f7] hover:shadow-[0_0_25px_rgba(168,85,247,0.45)]" data-category="tools">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#a855f7] font-extrabold">SURGE!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#201033] text-[#a855f7] border border-[#a855f7]/40 flex items-center justify-center font-bold text-lg font-code">▲</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">Vercel Deploy</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Dimension Deploy</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Edge deployments, production build pipelines, environment secrets management, and automated previews.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">90%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#a855f7] to-[#c084fc] w-[90%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Responsive Design -->
+            <div class="skill-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-[#00e5ff] hover:shadow-[0_0_25px_rgba(0,229,255,0.45)]" data-category="frontend">
+              <div class="absolute top-3 right-3 font-display text-sm text-[#00e5ff] font-extrabold">SHIFT!</div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#0c1f2e] text-[#00e5ff] border border-[#00e5ff]/40 flex items-center justify-center font-bold text-lg font-code">📱</div>
+                <div>
+                  <h3 class="font-display text-xl text-white">Responsive Design</h3>
+                  <div class="text-xs font-code font-bold text-[#9f9fb5]">Adaptive Power</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#8c8fa3] leading-relaxed mb-5 min-h-[48px]">Fluid viewports, touch-first gesture support, dynamic break-points, and pixel-precise cross-device rendering.</p>
+              <div class="pt-3 border-t border-[#1b142d]">
+                <div class="flex justify-between text-xs font-code mb-1"><span class="text-[#6d6d84]">CAPACITY</span><span class="text-white font-bold">96%</span></div>
+                <div class="w-full h-2 rounded-full bg-[#181126] overflow-hidden"><div class="h-full bg-gradient-to-r from-[#00e5ff] to-[#38bdf8] w-[96%]"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="relative py-24 bg-[#080811] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#170e2b] border border-[#00e5ff]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#00e5ff]">ACTIVE ASSIGNMENTS</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              MY <span class="text-[#00e5ff] chromatic-text">MISSIONS</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9ca0b4] leading-relaxed">
+              Real production-grade web applications crafted with modern tools. Click any card to launch its cinematic dossier and live browser simulator.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-[#120c24] border border-[#251d3b] rounded-xl max-w-lg mx-auto">
+              <button class="project-filter-btn px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase rounded-lg bg-gradient-to-r from-[#ff2a55] to-[#dc2626] text-white shadow-lg cursor-pointer" data-filter="all">All Missions (5)</button>
+              <button class="project-filter-btn px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="React & Frontend">React & Frontend</button>
+              <button class="project-filter-btn px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="Full-Stack">Full-Stack</button>
+              <button class="project-filter-btn px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase rounded-lg text-[#8b8b9e] hover:text-white cursor-pointer" data-filter="UI/UX & Clone">UI/UX & Clone</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- NewsMonkey -->
+            <div class="project-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-3xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-[#ff2a55] transition-all" data-category="React & Frontend">
+              <div class="absolute top-4 left-4 z-20 bg-[#07050e]/90 border border-[#ff2a55]/50 px-3 py-1 rounded text-[10px] font-code font-bold text-[#ff2a55]">MISSION #01</div>
+              <div class="open-project-btn relative h-48 w-full bg-[#120b24] cursor-pointer flex items-center justify-center border-b border-[#211736]" data-project="news-monkey">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#ff2a55]/20 to-[#00e5ff]/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-2xl bg-[#090514]/80 border border-white/10 flex items-center justify-center text-3xl mb-2">📰</div>
+                  <span class="text-xs font-code font-bold text-white uppercase">React & Frontend</span>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div class="text-[11px] font-code uppercase text-[#7e7e96] mb-1">React & Frontend</div>
+                  <h3 class="open-project-btn font-display text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00e5ff] transition-colors cursor-pointer mb-2" data-project="news-monkey">NewsMonkey</h3>
+                  <p class="text-xs sm:text-sm text-[#8f92a9] leading-relaxed mb-4">React-based live news portal featuring API integration, categorized news feeds, dynamic search, and seamless pagination.</p>
+                  <div class="flex flex-wrap gap-1.5 mb-6">
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">React.js</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">NewsAPI</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Bootstrap</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#1b142d] flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a href="https://newsmonkey-maaz.vercel.app" target="_blank" rel="noreferrer" class="px-3 py-1.5 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-lg">Live Demo ↗</a>
+                    <a href="https://github.com/vhoramaaz/newsmonkey-react" target="_blank" rel="noreferrer" class="p-1.5 text-[#9e9eb2] hover:text-white bg-[#150f28] rounded-lg">GitHub</a>
+                  </div>
+                  <button class="open-project-btn text-xs font-code font-semibold text-[#00e5ff] hover:underline cursor-pointer" data-project="news-monkey">Details →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TextUtils -->
+            <div class="project-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-3xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-[#00e5ff] transition-all" data-category="React & Frontend">
+              <div class="absolute top-4 left-4 z-20 bg-[#07050e]/90 border border-[#00e5ff]/50 px-3 py-1 rounded text-[10px] font-code font-bold text-[#00e5ff]">MISSION #02</div>
+              <div class="open-project-btn relative h-48 w-full bg-[#120b24] cursor-pointer flex items-center justify-center border-b border-[#211736]" data-project="text-utils">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#00e5ff]/20 to-[#a855f7]/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-2xl bg-[#090514]/80 border border-white/10 flex items-center justify-center text-3xl mb-2">📄</div>
+                  <span class="text-xs font-code font-bold text-white uppercase">React & Frontend</span>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div class="text-[11px] font-code uppercase text-[#7e7e96] mb-1">React & Frontend</div>
+                  <h3 class="open-project-btn font-display text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00e5ff] transition-colors cursor-pointer mb-2" data-project="text-utils">TextUtils</h3>
+                  <p class="text-xs sm:text-sm text-[#8f92a9] leading-relaxed mb-4">A React text utility application with word counting, character counting, copy to clipboard, regex whitespace cleaners, and text manipulation.</p>
+                  <div class="flex flex-wrap gap-1.5 mb-6">
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">React.js</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Tailwind</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Web Speech</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#1b142d] flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a href="https://textutils-maaz.vercel.app" target="_blank" rel="noreferrer" class="px-3 py-1.5 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-lg">Live Demo ↗</a>
+                    <a href="https://github.com/vhoramaaz/textutils-react" target="_blank" rel="noreferrer" class="p-1.5 text-[#9e9eb2] hover:text-white bg-[#150f28] rounded-lg">GitHub</a>
+                  </div>
+                  <button class="open-project-btn text-xs font-code font-semibold text-[#00e5ff] hover:underline cursor-pointer" data-project="text-utils">Details →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Apple Store Clone -->
+            <div class="project-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-3xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-[#a855f7] transition-all" data-category="UI/UX & Clone">
+              <div class="absolute top-4 left-4 z-20 bg-[#07050e]/90 border border-[#a855f7]/50 px-3 py-1 rounded text-[10px] font-code font-bold text-[#a855f7]">MISSION #03</div>
+              <div class="open-project-btn relative h-48 w-full bg-[#120b24] cursor-pointer flex items-center justify-center border-b border-[#211736]" data-project="apple-store-clone">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#a855f7]/20 to-[#00e5ff]/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-2xl bg-[#090514]/80 border border-white/10 flex items-center justify-center text-3xl mb-2">🍎</div>
+                  <span class="text-xs font-code font-bold text-white uppercase">UI/UX & Clone</span>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div class="text-[11px] font-code uppercase text-[#7e7e96] mb-1">UI/UX & Clone</div>
+                  <h3 class="open-project-btn font-display text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00e5ff] transition-colors cursor-pointer mb-2" data-project="apple-store-clone">Apple Store Clone</h3>
+                  <p class="text-xs sm:text-sm text-[#8f92a9] leading-relaxed mb-4">A responsive Apple-inspired storefront interface built using HTML, CSS and JavaScript with cinematic device showcase layouts.</p>
+                  <div class="flex flex-wrap gap-1.5 mb-6">
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">HTML5</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Modern CSS</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Vanilla JS</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#1b142d] flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a href="https://apple-store-clone-maaz.vercel.app" target="_blank" rel="noreferrer" class="px-3 py-1.5 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-lg">Live Demo ↗</a>
+                    <a href="https://github.com/vhoramaaz/apple-store-clone" target="_blank" rel="noreferrer" class="p-1.5 text-[#9e9eb2] hover:text-white bg-[#150f28] rounded-lg">GitHub</a>
+                  </div>
+                  <button class="open-project-btn text-xs font-code font-semibold text-[#00e5ff] hover:underline cursor-pointer" data-project="apple-store-clone">Details →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- E-Commerce Storefront -->
+            <div class="project-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-3xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-[#ff2a55] transition-all" data-category="Full-Stack">
+              <div class="absolute top-4 left-4 z-20 bg-[#07050e]/90 border border-[#ff2a55]/50 px-3 py-1 rounded text-[10px] font-code font-bold text-[#ff2a55]">MISSION #04</div>
+              <div class="open-project-btn relative h-48 w-full bg-[#120b24] cursor-pointer flex items-center justify-center border-b border-[#211736]" data-project="ecommerce-storefront">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#ff2a55]/20 to-[#a855f7]/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-2xl bg-[#090514]/80 border border-white/10 flex items-center justify-center text-3xl mb-2">🛍️</div>
+                  <span class="text-xs font-code font-bold text-white uppercase">Full-Stack MERN</span>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div class="text-[11px] font-code uppercase text-[#7e7e96] mb-1">Full-Stack MERN</div>
+                  <h3 class="open-project-btn font-display text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00e5ff] transition-colors cursor-pointer mb-2" data-project="ecommerce-storefront">E-Commerce Storefront</h3>
+                  <p class="text-xs sm:text-sm text-[#8f92a9] leading-relaxed mb-4">Interactive product storefront with product exploration, live customization, spec comparison, cart management, and seamless checkout flow.</p>
+                  <div class="flex flex-wrap gap-1.5 mb-6">
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">React.js</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Node/Express</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">MongoDB</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#1b142d] flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a href="https://ecommerce-store-maaz.vercel.app" target="_blank" rel="noreferrer" class="px-3 py-1.5 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-lg">Live Demo ↗</a>
+                    <a href="https://github.com/vhoramaaz/ecommerce-mern-store" target="_blank" rel="noreferrer" class="p-1.5 text-[#9e9eb2] hover:text-white bg-[#150f28] rounded-lg">GitHub</a>
+                  </div>
+                  <button class="open-project-btn text-xs font-code font-semibold text-[#00e5ff] hover:underline cursor-pointer" data-project="ecommerce-storefront">Details →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- AirPods Experience -->
+            <div class="project-card group relative bg-[#0e091b] border-2 border-[#201833] rounded-3xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-[#00e5ff] transition-all" data-category="UI/UX & Clone">
+              <div class="absolute top-4 left-4 z-20 bg-[#07050e]/90 border border-[#00e5ff]/50 px-3 py-1 rounded text-[10px] font-code font-bold text-[#00e5ff]">MISSION #05</div>
+              <div class="open-project-btn relative h-48 w-full bg-[#120b24] cursor-pointer flex items-center justify-center border-b border-[#211736]" data-project="airpods-experience">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#00e5ff]/20 to-[#ff2a55]/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-2xl bg-[#090514]/80 border border-white/10 flex items-center justify-center text-3xl mb-2">🎧</div>
+                  <span class="text-xs font-code font-bold text-white uppercase">UI/UX & Experience</span>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div class="text-[11px] font-code uppercase text-[#7e7e96] mb-1">UI/UX & Experience</div>
+                  <h3 class="open-project-btn font-display text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00e5ff] transition-colors cursor-pointer mb-2" data-project="airpods-experience">AirPods Experience</h3>
+                  <p class="text-xs sm:text-sm text-[#8f92a9] leading-relaxed mb-4">A cinematic product showcase featuring interactive video cards, spatial audio visualizer simulation, and immersive storytelling UI.</p>
+                  <div class="flex flex-wrap gap-1.5 mb-6">
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">React.js</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Canvas API</span>
+                    <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#160f29] border border-[#261b40] text-[#a4a6bc]">Framer Motion</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#1b142d] flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a href="https://airpods-experience-maaz.vercel.app" target="_blank" rel="noreferrer" class="px-3 py-1.5 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-lg">Live Demo ↗</a>
+                    <a href="https://github.com/vhoramaaz/airpods-product-experience" target="_blank" rel="noreferrer" class="p-1.5 text-[#9e9eb2] hover:text-white bg-[#150f28] rounded-lg">GitHub</a>
+                  </div>
+                  <button class="open-project-btn text-xs font-code font-semibold text-[#00e5ff] hover:underline cursor-pointer" data-project="airpods-experience">Details →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE / ORIGIN STORY SECTION -->
+      <section id="experience" class="relative py-24 bg-[#07070d] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#160e2b] border border-[#a855f7]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#a855f7]">CHRONOLOGY</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2a55] via-[#a855f7] to-[#00e5ff] chromatic-text">ORIGIN STORY</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9da0b5] leading-relaxed">
+              Every superhero has a defining arc. Here is how I evolved from writing my first HTML tag to architecting full-stack MERN applications.
+            </p>
+          </div>
+
+          <div class="relative max-w-4xl mx-auto">
+            <div class="absolute top-0 bottom-0 left-6 sm:left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#ff2a55] via-[#a855f7] to-[#00e5ff] opacity-60"></div>
+            <div class="space-y-12">
+              <!-- Step 1 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:flex-row-reverse gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#ff2a55] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">01</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#00e5ff] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#ff2a55] uppercase">THE SPARK</span><span class="text-[11px] font-code text-[#73738c]">FOUNDATION</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">HTML & CSS</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Learned semantic document layout, the CSS box model, responsive media queries, Flexbox, and Grid.</p>
+                </div>
+              </div>
+              <!-- Step 2 -->
+              <div class="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#00e5ff] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">02</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#00e5ff] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#00e5ff] uppercase">THE QUANTUM LEAP</span><span class="text-[11px] font-code text-[#73738c]">LOGIC AWAKENING</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">JavaScript (ES6+)</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Gained control over DOM manipulation, event loops, Promises, async/await, and functional arrays.</p>
+                </div>
+              </div>
+              <!-- Step 3 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:flex-row-reverse gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#a855f7] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">03</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#a855f7] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#a855f7] uppercase">COMPONENT MULTIVERSE</span><span class="text-[11px] font-code text-[#73738c]">FRAMEWORKS</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">React.js</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Declarative UI architecture, single-page application routing, hooks (useState, useEffect), and custom state logic.</p>
+                </div>
+              </div>
+              <!-- Step 4 -->
+              <div class="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#ff2a55] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">04</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#ff2a55] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#ff2a55] uppercase">MULTIVERSE BRANCHES</span><span class="text-[11px] font-code text-[#73738c]">COLLABORATION</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">Git & GitHub</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Mastered branch isolation, semantic commits, PR reviews, merge conflict resolutions, and repository hygiene.</p>
+                </div>
+              </div>
+              <!-- Step 5 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:flex-row-reverse gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#00e5ff] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">05</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#00e5ff] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#00e5ff] uppercase">DIMENSION OPTIMIZER</span><span class="text-[11px] font-code text-[#73738c]">BUILD TOOLS</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">Webpack & Vite</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Module bundlers, tree-shaking, code splitting, chunking, and transition to lightning-fast Vite dev servers.</p>
+                </div>
+              </div>
+              <!-- Step 6 -->
+              <div class="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#a855f7] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">06</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#a855f7] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#a855f7] uppercase">CROSSING THE VOID</span><span class="text-[11px] font-code text-[#73738c]">DEPLOYMENT</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">Vercel Deployment</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Continuous deployment pipelines, environment variable secrets, custom domains, and edge distribution.</p>
+                </div>
+              </div>
+              <!-- Step 7 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:flex-row-reverse gap-6 sm:gap-12">
+                <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0d081c] border-2 border-[#ff2a55] flex items-center justify-center z-10 text-xs font-code font-bold text-white shadow-lg">07</div>
+                <div class="ml-14 sm:ml-0 sm:w-[calc(50%-2.5rem)] bg-[#0d091b] border-2 border-[#1f1733] rounded-2xl p-6 hover:border-[#ff2a55] transition-all">
+                  <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-code font-bold text-[#ff2a55] uppercase">MASTER OF BOTH WORLDS</span><span class="text-[11px] font-code text-[#73738c]">FULL-STACK</span></div>
+                  <h3 class="font-display text-2xl text-white mb-2">The MERN Stack</h3>
+                  <p class="text-xs text-[#9da0b3] leading-relaxed mb-3">Unifying client and server. MongoDB databases, Express.js middleware, React frontends, and Node.js servers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section id="services" class="relative py-24 bg-[#090913] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#170e2b] border border-[#ff2a55]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#ff2a55]">SOLUTIONS & CAPABILITIES</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              WHAT I CAN <span class="text-[#ff2a55] chromatic-text">BUILD</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9ca0b4] leading-relaxed">
+              Need a reliable web developer for your next project, company, or startup? Here are the mission-ready services I deliver.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // FRONT-01</div>
+                <h3 class="font-display text-2xl text-white mb-2">Frontend Development</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Architecting clean, scalable, and modular client-side interfaces using React.js and modern JavaScript standards.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="Frontend Development">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // RESP-02</div>
+                <h3 class="font-display text-2xl text-white mb-2">Responsive Websites</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Crafting fluid web interfaces that seamlessly adapt across smartphones, tablets, laptops, and wide monitors.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="Responsive Websites">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // REACT-03</div>
+                <h3 class="font-display text-2xl text-white mb-2">React Applications</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Engineering interactive Single Page Applications (SPAs) with state-driven views and dynamic routing.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="React Applications">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // UX-04</div>
+                <h3 class="font-display text-2xl text-white mb-2">Interactive UI & UX</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Injecting life into websites with purposeful animations, subtle micro-interactions, and tactile feel.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="Interactive UI">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // LAND-05</div>
+                <h3 class="font-display text-2xl text-white mb-2">Landing Pages</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Building high-converting, visually striking landing pages that captivate visitors and communicate value.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="Landing Pages">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // COMM-06</div>
+                <h3 class="font-display text-2xl text-white mb-2">E-Commerce Interfaces</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Developing high-retention shopping experiences with product filters, cart drawers, and clean checkout flows.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="E-Commerce Interfaces">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // DEPL-07</div>
+                <h3 class="font-display text-2xl text-white mb-2">Website Deployment</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Connecting repositories to modern deployment networks on Vercel with automated continuous integration.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="Website Deployment">Request Service →</button>
+            </div>
+
+            <div class="bg-[#0d081b] border-2 border-[#1f1633] rounded-2xl p-6 flex flex-col justify-between hover:border-[#00e5ff] transition-all">
+              <div>
+                <div class="text-[10px] font-code text-[#ff2a55] font-bold mb-2">MISSION // IMPL-08</div>
+                <h3 class="font-display text-2xl text-white mb-2">UI Implementation</h3>
+                <p class="text-xs text-[#8d90a5] leading-relaxed mb-4">Translating design mockups and Figma frames into pixel-accurate, accessible, and responsive code.</p>
+              </div>
+              <button class="request-service-btn w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-[#150f28] hover:bg-[#ff2a55] rounded-xl transition-all cursor-pointer" data-service="UI Implementation">Request Service →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GITHUB SECTION ("MY WEB-SHOOTER") -->
+      <section id="github" class="relative py-24 bg-[#080810] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#131126] border border-[#00e5ff]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#00e5ff]">DEVELOPMENT RADAR</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-4">
+              MY <span class="text-[#00e5ff] chromatic-text">WEB-SHOOTER</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[#9da0b5] leading-relaxed">
+              GitHub is my personal web-shooter — shooting rapid commits, pulling clean requests, and deploying continuously across branches.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="p-5 rounded-2xl bg-[#0d081b] border-2 border-[#1f1633] text-center">
+              <div class="font-display text-3xl sm:text-4xl text-white tracking-wide mb-1">750+</div>
+              <div class="text-xs font-code text-[#7c7d95]">ANNUAL COMMITS</div>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#0d081b] border-2 border-[#1f1633] text-center">
+              <div class="font-display text-3xl sm:text-4xl text-[#00e5ff] tracking-wide mb-1">15+</div>
+              <div class="text-xs font-code text-[#7c7d95]">PUBLIC REPOSITORIES</div>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#0d081b] border-2 border-[#1f1633] text-center">
+              <div class="font-display text-3xl sm:text-4xl text-[#ff2a55] tracking-wide mb-1">99.2%</div>
+              <div class="text-xs font-code text-[#7c7d95]">REACT CODE PURITY</div>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#0d081b] border-2 border-[#1f1633] text-center">
+              <div class="font-display text-3xl sm:text-4xl text-[#a855f7] tracking-wide mb-1">100%</div>
+              <div class="text-xs font-code text-[#7c7d95]">VERCEL DEPLOY SUCCESS</div>
+            </div>
+          </div>
+
+          <!-- Heatmap Container -->
+          <div class="bg-[#0c071a] border-2 border-[#201835] rounded-3xl p-6 sm:p-8 mb-12 shadow-2xl">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                  <span>🕸 Web-Shooter Contribution Activity</span>
+                </h3>
+                <p class="text-xs text-[#82829b] mt-0.5">Commit telemetry across 52 weeks (364 days). Hover any square to inspect payload.</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-code text-[#8e8ea6]">
+                <span>Less</span>
+                <div class="flex gap-1">
+                  <div class="w-3 h-3 rounded-sm bg-[#120b22] border border-[#1d1334]"></div>
+                  <div class="w-3 h-3 rounded-sm bg-[#291740] border border-[#3f1f63]"></div>
+                  <div class="w-3 h-3 rounded-sm bg-[#ff2a55]/40 border border-[#ff2a55]/60"></div>
+                  <div class="w-3 h-3 rounded-sm bg-[#ff2a55]/70 border border-[#ff2a55]"></div>
+                  <div class="w-3 h-3 rounded-sm bg-[#00e5ff] border border-[#38bdf8]"></div>
+                </div>
+                <span>More</span>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto pb-2">
+              <div id="github-heatmap-grid" class="inline-grid grid-rows-7 grid-flow-col gap-1 min-w-[700px]"></div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-[#1d152e] flex items-center justify-between text-xs font-code text-[#a1a1b8]">
+              <div id="github-tooltip-info"><span class="text-[#6d6d84]">Hover over any web coordinate for date & commit logs</span></div>
+              <a href="https://github.com/vhoramaaz" target="_blank" rel="noreferrer" class="text-[#ff2a55] hover:underline font-semibold">Explore full GitHub profile ↗</a>
+            </div>
+          </div>
+
+          <!-- Repositories Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="https://github.com/vhoramaaz/newsmonkey-react" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">JavaScript // main</div>
+              <h4 class="font-display text-xl text-white mb-2">newsmonkey-react</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">Real-time category news application consuming live APIs with dynamic pagination and category filtering.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 12 · ⑂ 4</div>
+            </a>
+            <a href="https://github.com/vhoramaaz/textutils-react" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">JavaScript // main</div>
+              <h4 class="font-display text-xl text-white mb-2">textutils-react</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">React text manipulation suite with live word counter, regex formatting, and speech synthesis.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 18 · ⑂ 6</div>
+            </a>
+            <a href="https://github.com/vhoramaaz/apple-store-clone" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">HTML & CSS // main</div>
+              <h4 class="font-display text-xl text-white mb-2">apple-store-clone</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">Faithful responsive reproduction of Apple’s online storefront interface with device specs selector.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 24 · ⑂ 8</div>
+            </a>
+            <a href="https://github.com/vhoramaaz/ecommerce-mern-store" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">MERN Stack // main</div>
+              <h4 class="font-display text-xl text-white mb-2">ecommerce-mern-store</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">Full-stack MERN shopping experience with dynamic catalog filters, interactive cart, and REST APIs.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 31 · ⑂ 11</div>
+            </a>
+            <a href="https://github.com/vhoramaaz/airpods-product-experience" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">React Canvas // main</div>
+              <h4 class="font-display text-xl text-white mb-2">airpods-product-experience</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">Cinematic Apple-inspired product launch landing page featuring spatial audio frequency visualizer.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 28 · ⑂ 7</div>
+            </a>
+            <a href="https://github.com/vhoramaaz/spiderverse-portfolio" target="_blank" rel="noreferrer" class="p-6 rounded-2xl bg-[#0c0819] border-2 border-[#1d1430] hover:border-[#00e5ff] transition-all">
+              <div class="text-xs font-code text-[#ff2a55] mb-2 font-bold">Pure Web // main</div>
+              <h4 class="font-display text-xl text-white mb-2">spiderverse-portfolio</h4>
+              <p class="text-xs text-[#8c8fa3] mb-4">Modern, high-performance developer portfolio inspired by the Spider-Verse dimension aesthetic.</p>
+              <div class="text-xs font-code text-[#73738b] pt-3 border-t border-[#1b132c]">★ 45 · ⑂ 14</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="relative py-24 bg-[#07070e] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#170e2b] border border-[#ff2a55]/40 mb-3">
+              <span class="text-xs font-code font-bold tracking-widest uppercase text-[#ff2a55]">COMMUNICATION CHANNEL</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-wide mb-3">
+              NEED A <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2a55] to-[#00e5ff] chromatic-text">DEVELOPER?</span>
+            </h2>
+            <p class="text-lg sm:text-xl text-[#00e5ff] font-medium tracking-wide">
+              "Let's build something from another dimension."
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
+            <div class="lg:col-span-5 space-y-6">
+              <div class="p-8 rounded-3xl bg-[#0d081c] border-2 border-[#1f1635] shadow-2xl relative">
+                <h3 class="font-display text-2xl sm:text-3xl text-white tracking-wide mb-4">MISSION DISPATCH</h3>
+                <p class="text-xs sm:text-sm text-[#9193a8] leading-relaxed mb-6">
+                  Have a project inquiry, frontend contract, full-stack opening, or just want to discuss Spider-Verse theories? Connect through any channel below.
+                </p>
+
+                <div class="p-4 rounded-xl bg-[#140e26] border border-[#2d1f48] mb-6">
+                  <div class="text-[11px] font-code text-[#ff2a55] uppercase font-bold mb-1">DIRECT EMAIL</div>
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs sm:text-sm font-code text-white truncate">vhoramaaz606@gmail.com</span>
+                    <button id="copy-email-btn" class="px-2.5 py-1 rounded bg-[#21163d] hover:bg-[#ff2a55] text-xs text-white transition-colors cursor-pointer shrink-0">Copy</button>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <a href="https://github.com/vhoramaaz" target="_blank" rel="noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-[#120b22] border border-[#241a3d] hover:border-[#00e5ff] text-[#cfd0df] hover:text-white transition-all">
+                    <span class="text-sm font-semibold">GitHub Profile</span>
+                    <span>↗</span>
+                  </a>
+                  <a href="https://linkedin.com/in/vhoramaaz" target="_blank" rel="noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-[#120b22] border border-[#241a3d] hover:border-[#ff2a55] text-[#cfd0df] hover:text-white transition-all">
+                    <span class="text-sm font-semibold">LinkedIn Network</span>
+                    <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <form id="contact-mission-form" class="p-8 sm:p-10 rounded-3xl bg-[#0c071a] border-2 border-[#221838] shadow-2xl space-y-6">
+                <div id="contact-success-alert" class="hidden p-4 rounded-xl bg-[#122e1b] border border-[#22c55e] text-white text-xs sm:text-sm">
+                  ✓ Transmission Initialized! Your email client opened with the mission payload.
+                </div>
+
+                <div>
+                  <label class="block text-xs font-code font-bold uppercase tracking-wider text-[#d5d6e6] mb-2">YOUR NAME *</label>
+                  <input id="contact-name" type="text" required placeholder="Peter Parker, Miles Morales, or Hiring Manager..." class="w-full px-4 py-3 bg-[#130d24] border border-[#2d2047] rounded-xl text-white placeholder-[#5a5a73] text-sm focus:outline-none focus:border-[#00e5ff]">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-code font-bold uppercase tracking-wider text-[#d5d6e6] mb-2">YOUR EMAIL *</label>
+                  <input id="contact-email" type="email" required placeholder="contact@dimension.com" class="w-full px-4 py-3 bg-[#130d24] border border-[#2d2047] rounded-xl text-white placeholder-[#5a5a73] text-sm focus:outline-none focus:border-[#00e5ff]">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-code font-bold uppercase tracking-wider text-[#d5d6e6] mb-2">SUBJECT / MISSION TYPE</label>
+                  <input id="contact-subject" type="text" placeholder="React Application, Freelance Project, Full-Time Role..." class="w-full px-4 py-3 bg-[#130d24] border border-[#2d2047] rounded-xl text-white placeholder-[#5a5a73] text-sm focus:outline-none focus:border-[#00e5ff]">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-code font-bold uppercase tracking-wider text-[#d5d6e6] mb-2">MESSAGE INTEL *</label>
+                  <textarea id="contact-message" required rows="4" placeholder="Describe your vision, timeline, or requirements..." class="w-full px-4 py-3 bg-[#130d24] border border-[#2d2047] rounded-xl text-white placeholder-[#5a5a73] text-sm focus:outline-none focus:border-[#00e5ff]"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#ff2a55] to-[#dc2626] text-white font-display text-xl tracking-wider uppercase shadow-[0_0_25px_rgba(255,42,85,0.45)] hover:shadow-[0_0_35px_rgba(255,42,85,0.7)] transition-all cursor-pointer">
+                  START THE MISSION 🚀
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="relative bg-[#050509] border-t border-[#1a1329] py-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <div class="font-display text-2xl sm:text-3xl tracking-wide text-white">
+          "WITH GREAT CODE COMES GREAT RESPONSIBILITY."
+        </div>
+        <div class="flex items-center justify-center gap-6 text-sm text-[#8e8ea6]">
+          <a href="https://github.com/vhoramaaz" target="_blank" rel="noreferrer" class="hover:text-[#00e5ff]">GitHub</a> ·
+          <a href="https://linkedin.com/in/vhoramaaz" target="_blank" rel="noreferrer" class="hover:text-[#ff2a55]">LinkedIn</a> ·
+          <a href="mailto:vhoramaaz606@gmail.com" class="hover:text-white">Email</a>
+        </div>
+        <div class="pt-4 border-t border-[#160f24] max-w-md mx-auto text-xs text-[#717188] flex items-center justify-between">
+          <span>© 2026 Maaz — Built with code, creativity & caffeine.</span>
+          <button id="back-to-top-btn" class="text-xs font-code text-[#ff2a55] hover:text-white cursor-pointer">Back to Top ↑</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CINEMATIC PROJECT DETAIL MODAL WITH SPIDER-VERSE PORTAL -->
+    <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+      <div id="modal-backdrop" class="fixed inset-0 bg-[#040408]/85 backdrop-blur-md"></div>
+      <div class="relative w-full max-w-4xl bg-[#0c0817] border-2 border-[#ff2a55]/60 rounded-3xl shadow-[0_0_60px_rgba(255,42,85,0.35)] overflow-hidden my-auto z-10">
+        <div class="px-6 py-4 border-b border-[#241a3d] bg-[#120c24]/90 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ff2a55] animate-pulse"></span>
+            <span id="modal-category" class="text-xs font-code font-bold uppercase text-[#00e5ff]">MISSION DOSSIER</span>
+          </div>
+          <button id="modal-close-btn" class="p-1.5 text-[#9e9ea7] hover:text-white rounded-lg bg-[#1f1538] hover:bg-[#ff2a55] cursor-pointer">✕</button>
+        </div>
+
+        <div class="px-6 sm:px-8 py-8 bg-gradient-to-r from-[#ff2a55]/20 via-[#170c2e]/40 to-[#00e5ff]/20 border-b border-[#241a3d]">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+            <h2 id="modal-title" class="font-display text-3xl sm:text-4xl md:text-5xl text-white">Project Title</h2>
+            <div class="flex items-center gap-3">
+              <a id="modal-live-demo" href="#" target="_blank" rel="noreferrer" class="px-4 py-2 text-xs font-bold uppercase text-white bg-gradient-to-r from-[#ff2a55] to-[#dc2626] rounded-xl shadow-md">Live Demo ↗</a>
+              <a id="modal-github" href="#" target="_blank" rel="noreferrer" class="px-4 py-2 text-xs font-bold uppercase text-[#d1d1e0] bg-[#160f2b] border border-[#3b2b5f] rounded-xl">GitHub</a>
+            </div>
+          </div>
+          <p id="modal-tagline" class="text-sm sm:text-base text-[#d2d3e5] font-medium">Tagline</p>
+        </div>
+
+        <div class="px-6 sm:px-8 py-3 bg-[#0f0a1d] border-b border-[#241a3d] flex items-center gap-4">
+          <button class="modal-tab-btn text-xs font-bold uppercase tracking-wider py-1.5 border-b-2 text-[#00e5ff] border-[#00e5ff] cursor-pointer" data-tab="overview">Overview</button>
+          <button class="modal-tab-btn text-xs font-bold uppercase tracking-wider py-1.5 border-b-2 text-[#84849a] border-transparent cursor-pointer" data-tab="interactive">🕹 Interactive Simulator</button>
+          <button class="modal-tab-btn text-xs font-bold uppercase tracking-wider py-1.5 border-b-2 text-[#84849a] border-transparent cursor-pointer" data-tab="learnings">Challenges & Learnings</button>
+        </div>
+
+        <div class="p-6 sm:px-8 py-6 max-h-[60vh] overflow-y-auto space-y-6">
+          <div id="tab-overview" class="modal-tab-pane space-y-6">
+            <div>
+              <h4 class="text-xs font-code font-bold uppercase text-[#ff2a55] mb-2">MISSION BRIEF</h4>
+              <p id="modal-long-desc" class="text-sm text-[#b6b8cb] leading-relaxed"></p>
+            </div>
+            <div>
+              <h4 class="text-xs font-code font-bold uppercase text-[#00e5ff] mb-2">TECH ARSENAL</h4>
+              <div id="modal-tech-arsenal" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div>
+              <h4 class="text-xs font-code font-bold uppercase text-[#22c55e] mb-2">DEPLOYED CAPABILITIES</h4>
+              <div id="modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            </div>
+            <div class="p-4 rounded-xl bg-[#160d2e] border border-[#a855f7]/40 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] font-code text-[#a855f7] uppercase font-bold">PERFORMANCE METRIC</div>
+                <div id="modal-metrics" class="text-sm font-semibold text-white mt-0.5"></div>
+              </div>
+              <span class="text-xs font-code text-[#00e5ff]">STATUS: PRODUCTION</span>
+            </div>
+          </div>
+
+          <div id="tab-interactive" class="modal-tab-pane hidden space-y-4">
+            <div class="p-3 bg-[#130e26] border border-[#2b1f48] rounded-xl text-xs text-[#00e5ff] font-code">
+              🕹️ INTERACTIVE PREVIEW // Test real logic implemented in this project directly in your browser.
+            </div>
+            <div id="interactive-simulator-container"></div>
+          </div>
+
+          <div id="tab-learnings" class="modal-tab-pane hidden space-y-6">
+            <div class="p-5 rounded-2xl bg-[#170e28] border border-[#ff2a55]/40 space-y-2">
+              <div class="text-[#ff2a55] font-bold text-xs uppercase font-code">⚠ The Crucible (Challenges Encountered)</div>
+              <p id="modal-challenges" class="text-sm text-[#d4d5e2] leading-relaxed"></p>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#0f1929] border border-[#00e5ff]/40 space-y-2">
+              <div class="text-[#00e5ff] font-bold text-xs uppercase font-code">📖 Dimensional Growth (What I Learned)</div>
+              <p id="modal-learnings" class="text-sm text-[#d4d5e2] leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 sm:px-8 py-4 bg-[#0a0715] border-t border-[#241a3d] flex items-center justify-between text-xs text-[#7d7d96]">
+          <span class="font-code">ESC key to exit dimensional portal</span>
+          <button id="modal-secondary-close" class="px-4 py-1.5 rounded-lg bg-[#18112a] hover:bg-[#251b40] text-white cursor-pointer">Close Dossier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PURE VANILLA JAVASCRIPT ENTRYPOINT -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
